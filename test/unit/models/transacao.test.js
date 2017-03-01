@@ -1,12 +1,9 @@
 'use strict';
 
-process.env.NODE_ENV = 'test';
-
 describe('Transacao', () =>
 {
   const Transacao = require('../../../src/models').transacao,
   ContaCorrente = require('../../../src/models').contaCorrente,
-  expect = require('chai').expect,
   contaCorrente1 = {
     id: 1,
     cpf: '12345678901',
@@ -22,16 +19,14 @@ describe('Transacao', () =>
     saldo: 40.0
   },
   transacao1 = {
-    id: 1,
     valor: 20.0,
-    data: '2017-01-01',
+    data: new Date(),
     conta_src: contaCorrente1.id,
     conta_dest: contaCorrente2.id
   },
   transacao2 = {
-    id: 2,
     valor: 40.0,
-    data: '2017-01-01',
+    data: new Date(),
     conta_src: contaCorrente2.id,
     conta_dest: contaCorrente1.id
   };
@@ -51,8 +46,14 @@ describe('Transacao', () =>
 
   it('Create transacao', done =>
   {
-    Transacao.create(transacao2).then( () => {
-        done();
+    Transacao.create(transacao2).then( transacaoInserida =>
+    {
+      expect(transacaoInserida).to.be.a('object');
+      expect(transacaoInserida.id).to.not.be.undefined;
+      expect(transacaoInserida.conta_src).to.equal('2');
+      expect(transacaoInserida.conta_dest).to.equal('1');
+      expect(transacaoInserida.valor).to.equal(40.0);
+      done();
     });
   });
 });

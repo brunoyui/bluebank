@@ -1,10 +1,7 @@
 'use strict';
 
-process.env.NODE_ENV = 'test';
-
 describe('ContaCorrente', () => {
   const ContaCorrente = require('../../../src/models').contaCorrente,
-  expect = require('chai').expect,
   contaCorrente1 = {
     id: 1,
     cpf: '12345678901',

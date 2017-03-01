@@ -1,12 +1,9 @@
 'use strict';
 
-process.env.NODE_ENV = 'test';
-
-describe('Transacao Lib', () =>
+describe('Transacao Services Unit Test with db integration', () =>
 {
   const Transacao = require('../../../src/models').transacao,
   ContaCorrente = require('../../../src/models').contaCorrente,
-  expect = require('chai').expect,
   TransacaoLib = require('../../../src/services/transacao'),
   contaCorrente1 = {
     id: 1,
