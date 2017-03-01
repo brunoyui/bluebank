@@ -7,7 +7,7 @@ describe('Transacao Lib', () =>
   const Transacao = require('../../../src/models').transacao,
   ContaCorrente = require('../../../src/models').contaCorrente,
   expect = require('chai').expect,
-  TransacaoLib = require('../../../src/lib/transacao'),
+  TransacaoLib = require('../../../src/services/transacao'),
   contaCorrente1 = {
     id: 1,
     cpf: '12345678901',
@@ -98,9 +98,27 @@ describe('Transacao Lib', () =>
       expect(result.data.error).to.not.be.null;
       expect(result.status).to.equal(-1);
       expect(result.data.error).to.equal('saldo insuficiente');
-    }).then( ()=>
-    {
-      done();
+
+      /* Validação dos saldos das contas */
+      Promise.all( [
+        ContaCorrente.findOne( { where: { id: 1}}).then ( conta =>
+        {
+          expect(conta.saldo).to.equal(80.0);
+        }).catch(err =>
+        {
+          expect(err).to.be.null;
+        }),
+        ContaCorrente.findOne( { where: { id: 2}}).then ( conta =>
+        {
+          expect(conta.saldo).to.equal(100.0);
+        }).catch(err =>
+        {
+          expect(err).to.be.null;
+        })
+      ]).then( () =>
+      {
+        done();
+      });
     });
   });
 
@@ -123,9 +141,27 @@ describe('Transacao Lib', () =>
       expect(result.data.error).to.not.be.null;
       expect(result.status).to.equal(-1);
       expect(result.data.error).to.equal('conta destino nao existe');
-    }).then( ()=>
-    {
-      done();
+
+      /* Validação dos saldos das contas */
+      Promise.all( [
+        ContaCorrente.findOne( { where: { id: 1}}).then ( conta =>
+        {
+          expect(conta.saldo).to.equal(80.0);
+        }).catch(err =>
+        {
+          expect(err).to.be.null;
+        }),
+        ContaCorrente.findOne( { where: { id: 2}}).then ( conta =>
+        {
+          expect(conta.saldo).to.equal(100.0);
+        }).catch(err =>
+        {
+          expect(err).to.be.null;
+        })
+      ]).then( () =>
+      {
+        done();
+      });
     });
   });
 });
