@@ -51,9 +51,9 @@ describe('Transacao Lib', () =>
     TransacaoLib.transferirFundos(contaCorrenteSrc, contaCorrenteDest, 20.0).then( result =>
     {
       expect(result.status).to.equal(1);
-      expect(result.data).to.be.not.null;
-      expect(result.data.id).to.be.not.null;
-      expect(result.data.id).to.not.equal('0');
+      expect(result.data).to.not.be.undefined;
+      expect(result.data.id).to.not.be.undefined;
+      expect(result.data.id).to.not.equal(0);
       expect(result.data.valor).to.equal(20.0);
 
       /* Validação dos saldos das contas */
@@ -63,14 +63,14 @@ describe('Transacao Lib', () =>
           expect(conta.saldo).to.equal(60.0);
         }).catch(err =>
         {
-          expect(err).to.be.null;
+          expect(err).to.be.undefined;
         }),
         ContaCorrente.findOne( { where: { id: 2}}).then ( conta =>
         {
           expect(conta.saldo).to.equal(120.0);
         }).catch(err =>
         {
-          expect(err).to.be.null;
+          expect(err).to.be.undefined;
         })
       ]).then( () =>
       {
@@ -95,7 +95,7 @@ describe('Transacao Lib', () =>
     TransacaoLib.transferirFundos(contaCorrenteSrc, contaCorrenteDest, 100.0).then( result =>
     {
       console.log(result);
-      expect(result.data.error).to.not.be.null;
+      expect(result.data.error).to.not.be.undefined;
       expect(result.status).to.equal(-1);
       expect(result.data.error).to.equal('saldo insuficiente');
 
@@ -106,14 +106,14 @@ describe('Transacao Lib', () =>
           expect(conta.saldo).to.equal(80.0);
         }).catch(err =>
         {
-          expect(err).to.be.null;
+          expect(err).to.be.undefined;
         }),
         ContaCorrente.findOne( { where: { id: 2}}).then ( conta =>
         {
           expect(conta.saldo).to.equal(100.0);
         }).catch(err =>
         {
-          expect(err).to.be.null;
+          expect(err).to.be.undefined;
         })
       ]).then( () =>
       {
@@ -138,7 +138,7 @@ describe('Transacao Lib', () =>
     TransacaoLib.transferirFundos(contaCorrenteSrc, contaCorrenteDest, 20.0).then( result =>
     {
       console.log(result);
-      expect(result.data.error).to.not.be.null;
+      expect(result.data.error).to.not.be.undefined;
       expect(result.status).to.equal(-1);
       expect(result.data.error).to.equal('conta destino nao existe');
 
@@ -149,14 +149,14 @@ describe('Transacao Lib', () =>
           expect(conta.saldo).to.equal(80.0);
         }).catch(err =>
         {
-          expect(err).to.be.null;
+          expect(err).to.be.undefined;
         }),
         ContaCorrente.findOne( { where: { id: 2}}).then ( conta =>
         {
           expect(conta.saldo).to.equal(100.0);
         }).catch(err =>
         {
-          expect(err).to.be.null;
+          expect(err).to.be.undefined;
         })
       ]).then( () =>
       {

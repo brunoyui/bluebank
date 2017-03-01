@@ -29,7 +29,7 @@ describe('ContaCorrente', () => {
       done();
     });
   });
-  
+
   it('Create conta corrente', done =>
   {
     ContaCorrente.create({id: 10, cpf: '12345678901', numeroConta: 10, codigoAgencia: 1 , saldo: 0.0 })
@@ -61,7 +61,7 @@ describe('ContaCorrente', () => {
     ContaCorrente.findOne( { where: { cpf: '12345678901', numeroConta: 1, codigoAgencia: 1 }})
       .then( (conta) =>
       {
-        expect(conta).to.be.not.null;
+        expect(conta).to.not.be.undefined;
         expect(conta).to.be.a.object;
         expect(conta.id).to.equal('1');
         done();
