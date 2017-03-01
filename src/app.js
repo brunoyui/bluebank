@@ -7,6 +7,6 @@ const app = express();
 app.use(bodyParser.json());
 
 
-app.use('/transacao', require('./routes/transacao'));
+app.use('/transacoes', require('./routes/transacao'));
 
 module.exports = app;

@@ -1,8 +1,6 @@
 'use strict';
 
-process.env.NODE_ENV = 'test';
-
-describe('Route for transaction operations /transacao', () => {
+describe('Route for transaction operations /transacoes', () => {
 
   const contaCorrente1 = {
     id: 1,
@@ -51,7 +49,7 @@ describe('Route for transaction operations /transacao', () => {
     };
 
     request
-      .post('/transacao/transfer')
+      .post('/transacoes/transfer')
       .send(contas)
       .end( (err, res) =>
       {
