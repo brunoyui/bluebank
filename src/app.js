@@ -8,5 +8,6 @@ app.use(bodyParser.json());
 
 
 app.use('/transacoes', require('./routes/transacao'));
+app.use('/contas', require('./routes/conta'));
 
 module.exports = app;
