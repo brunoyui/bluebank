@@ -3,9 +3,12 @@
 let models = require('../../models');
 const sequelize = models.sequelize;
 
+const responseDefault = (data, status = 1) => ( {data, status });
+const responseError = (message, status = -1) => responseDefault( { error: message} , status);
+
 const transferirFundos = (contaSrc, contaDest, valor) =>
 {
-  let contaCorrenteSrc = null, contaCorrenteDest = null, transacao = null;
+  let contaCorrenteSrc = null, contaCorrenteDest = null, transacao = null, responseReturn;
 
   return sequelize.transaction( {autocommit: true,
       isolationLevel: sequelize.Transaction.ISOLATION_LEVELS.READ_COMMITTED }, (t1) =>
@@ -17,47 +20,54 @@ const transferirFundos = (contaSrc, contaDest, valor) =>
           contaCorrenteSrc = conta1;
           contaCorrenteDest = conta2;
 
-          if ( (contaCorrenteSrc.id != '0' && parseFloat(contaCorrenteSrc.saldo) >= parseFloat(valor)) && contaCorrenteDest.id != '0')
+          if ( (contaCorrenteSrc != null && contaCorrenteSrc.id != '0' && parseFloat(contaCorrenteSrc.saldo) >= parseFloat(valor)))
           {
-
-            return models.transacao.create(
+            if (contaCorrenteDest != null && contaCorrenteDest.id != '0')
+            {
+              return models.transacao.create(
               {
-                id: 1,
                 valor: parseFloat(valor),
-                data: '2017-01-01',
+                data: new Date(),
                 conta_src: contaCorrenteSrc.id,
                 conta_dest: contaCorrenteDest.id
               }, {transaction: t1}).then( transacaoInserida => {
 
-                if(transacaoInserida.id != '0')
+                if(transacaoInserida != null && transacaoInserida.id != '0')
                 {
+
                   contaCorrenteSrc.saldo = contaCorrenteSrc.saldo - valor;
                   contaCorrenteDest.saldo = contaCorrenteDest.saldo + valor;
+
+                  responseReturn = responseDefault(transacaoInserida);
 
                   return Promise.all ([
                     contaCorrenteSrc.update( {saldo: contaCorrenteSrc.saldo}, {transaction: t1}),
                     contaCorrenteDest.update( {saldo: contaCorrenteDest.saldo}, {transaction: t1})
                   ]).then ( ([conta1, conta2]) => {
-                    return "OK";
+                    return responseReturn;
                   });
                 }
                 else
                 {
-                  throw new Error();
+                  throw new Error('transacao nao criada');
                 }
-             });
+              });
+            }
+            else
+            {
+              throw new Error('conta destino nao existe');
+            }
           }
           else
           {
-            throw new Error();
+            throw new Error('saldo insuficiente');
           }
         });
       }).then ( result => {
         return result;
       }).catch(err => {
-        return err;
+        return responseError(err.message);
       });
-
 };
 
 module.exports.transferirFundos = transferirFundos;

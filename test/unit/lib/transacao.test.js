@@ -25,6 +25,7 @@ describe('Transacao Lib', () =>
 
   beforeEach( done => {
     ContaCorrente.sync();
+    Transacao.sync();
     ContaCorrente.destroy({ where: {} })
     .then( () => ContaCorrente.create(contaCorrente1))
     .then( () => ContaCorrente.create(contaCorrente2))
@@ -49,7 +50,81 @@ describe('Transacao Lib', () =>
 
     TransacaoLib.transferirFundos(contaCorrenteSrc, contaCorrenteDest, 20.0).then( result =>
     {
-      expect(result).to.be.a.object;
+      expect(result.status).to.equal(1);
+      expect(result.data).to.be.not.null;
+      expect(result.data.id).to.be.not.null;
+      expect(result.data.id).to.not.equal('0');
+      expect(result.data.valor).to.equal(20.0);
+
+      /* Validação dos saldos das contas */
+      Promise.all( [
+        ContaCorrente.findOne( { where: { id: 1}}).then ( conta =>
+        {
+          expect(conta.saldo).to.equal(60.0);
+        }).catch(err =>
+        {
+          expect(err).to.be.null;
+        }),
+        ContaCorrente.findOne( { where: { id: 2}}).then ( conta =>
+        {
+          expect(conta.saldo).to.equal(120.0);
+        }).catch(err =>
+        {
+          expect(err).to.be.null;
+        })
+      ]).then( () =>
+      {
+        done();
+      });
+    });
+  });
+
+  it('Transferir fundos saldo conta correnteSrc insuficiente', done =>
+  {
+    const contaCorrenteSrc = {
+      cpf: '12345678901',
+      numeroConta: 1,
+      codigoAgencia: 1
+    },
+    contaCorrenteDest = {
+      cpf: '09876543210',
+      numeroConta: 2,
+      codigoAgencia: 2
+    };
+
+    TransacaoLib.transferirFundos(contaCorrenteSrc, contaCorrenteDest, 100.0).then( result =>
+    {
+      console.log(result);
+      expect(result.data.error).to.not.be.null;
+      expect(result.status).to.equal(-1);
+      expect(result.data.error).to.equal('saldo insuficiente');
+    }).then( ()=>
+    {
+      done();
+    });
+  });
+
+  it('Transferir fundos conta correnteDest nao existe', done =>
+  {
+    const contaCorrenteSrc = {
+      cpf: '12345678901',
+      numeroConta: 1,
+      codigoAgencia: 1
+    },
+    contaCorrenteDest = {
+      cpf: '09876543210',
+      numeroConta: 41,
+      codigoAgencia: 2
+    };
+
+    TransacaoLib.transferirFundos(contaCorrenteSrc, contaCorrenteDest, 20.0).then( result =>
+    {
+      console.log(result);
+      expect(result.data.error).to.not.be.null;
+      expect(result.status).to.equal(-1);
+      expect(result.data.error).to.equal('conta destino nao existe');
+    }).then( ()=>
+    {
       done();
     });
   });

@@ -5,7 +5,7 @@ let contaCorrente = null;
 contaCorrente = (sequelize, DataTypes) =>
 {
   const ContaCorrente = sequelize.define ('contaCorrente', {
-    id: {type : DataTypes.BIGINT, primaryKey: true},
+    id: {type : DataTypes.BIGINT, primaryKey: true, autoIncrement: true},
     cpf: {type : DataTypes.STRING },
     numeroConta: {type: DataTypes.BIGINT},
     codigoAgencia: {type: DataTypes.BIGINT},
