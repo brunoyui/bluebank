@@ -12,11 +12,11 @@ app.use('/transacoes', require('./routes/transacao'));
 app.use('/contas', require('./routes/conta'));
 
 // Point static path to dist
-app.use(express.static(path.join(__dirname, '../client/dist')));
+app.use(express.static(path.join(__dirname, '../clientapp/dist')));
 
 // Catch all other routes and return the index file
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+  res.sendFile(path.join(__dirname, '../clientapp/dist/index.html'));
 });
 
 
