@@ -14,16 +14,16 @@ Integrou-se junto ao Angular2, o angular-material2 para os templates. Isto facil
 
 ## Explicando a estrutura do código
 bluebank
-	.|.
+	.
 	test
-	   .|.
+	   .
 	   integration
-		           .|.
+		           .
 			         routes - contém os testes de integração para as chamadas à API Rest por http.
 			         helper.js - arquivo auxiliar para o framework mocha ao executar testes de integração
 			         mocha.opts - arquivo com parâmetros para o framework mocha para executar testes de integração
 	   unit
-		    .|.
+		    .
 		    models - contém testes unitários para algumas operações realizadas nos modelos ao interagir com banco
 		    services - contém testes unitários para funcionalidades de negócio, no caso o teste para transferência de fundos entre contas
 		    helper.js - arquivo auxiliar para o framework mocha ao excutar testes unitários
