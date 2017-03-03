@@ -18,7 +18,7 @@ __ | <br/>
 __ test <br/>
 _____ | <br/>
 _____ integration <br/>
-_______________ |
+_______________ | <br/>
 _______________ routes - contém os testes de integração para as chamadas à API Rest por http. <br/>
 _______________ ./helper.js - arquivo auxiliar para o framework mocha ao executar testes de integração <br/>
 _______________ ./mocha.opts - arquivo com parâmetros para o framework mocha para executar testes de integração <br/>
@@ -30,8 +30,8 @@ ________ ./helper.js - arquivo auxiliar para o framework mocha ao excutar testes
 ________ ./mocha.opts - arquivo com parâmetros para o framework mocha para executar testes unitários <br/>
 __ src -	contém todo o código para back-end <br/>
 __ clientapp - contém todo o códgio para front-end <br/>
-__ ./.babelrc - configuração para babel (babel foi utilizado para utilizar alguns recursos atuais do javascript) <br/>
-__ ./.manifest.yml - configuração para deploy no Bluemix <br/>
+__ .babelrc - configuração para babel (babel foi utilizado para utilizar alguns recursos atuais do javascript) <br/>
+__ manifest.yml - configuração para deploy no Bluemix <br/>
 
 ##Observações
 A parte fron-end não está totalmente finalizada. Foi criado a estrutura e a página inicial de contas com a integração para acessar a API de contas fornecida pelo back-end.
