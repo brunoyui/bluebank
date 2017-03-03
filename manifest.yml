@@ -1,0 +1,6 @@
+---
+applications:
+- name:    bluebankbyui
+  memory:  1024M
+  services:
+    - Compose for PostgreSQL-ry

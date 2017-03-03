@@ -1,0 +1,26 @@
+{
+   "services": {
+    "compose-for-postgresql": [
+        {
+            "credentials": {
+                "db_type": "postgresql",
+                "name": "bmix_dal_yp_93ab990d_eecb_4c31_81f7_6f66d6d8b2d7",
+                "uri_cli": "psql \"sslmode=require host=bluemix-sandbox-dal-9-portal.3.dblayer.com port=23971 dbname=compose user=admin\"",
+                "ca_certificate_base64": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURjekNDQWx1Z0F3SUJBZ0lFV0xpaTZqQU5CZ2txaGtpRzl3MEJBUTBGQURBN01Ua3dOd1lEVlFRREREQmkKZVhWcFFHSnlMbWxpYlM1amIyMHROalk0Wm1OaU9XTmxZelkyWVdRMk1qVTVZV1E0T0RJMlpEWXpPR0U0WVRZdwpIaGNOTVRjd016QXlNakkxTlRNNFdoY05NemN3TXpBeU1qSXdNREF3V2pBN01Ua3dOd1lEVlFRREREQmllWFZwClFHSnlMbWxpYlM1amIyMHROalk0Wm1OaU9XTmxZelkyWVdRMk1qVTVZV1E0T0RJMlpEWXpPR0U0WVRZd2dnRWkKTUEwR0NTcUdTSWIzRFFFQkFRVUFBNElCRHdBd2dnRUtBb0lCQVFEZEYvZzMwbEtsbXhseTg5eTR0dm5rN0w1bQp4eUxoYjQxN3NkS3daemxSWVFESDl3b292eUplcXRkUGN4OVhmcHlQa3VYNVlhUHZraktsR3paOUlENlVjbERECldSd1RPVG4xUEl5WFU4NkxrUXdVcHFPWnJ3SU5QTmlEMjR1ZDdqekFVbk9YVitybC9IZmQwNVZCYlkrNktKWHMKMFJ1eE11QUZFOUhSYW02UkVPREU0N0Qzc2xEOGJqcXcraUxjazloK0FzVGhpRUl6ajdsSGZSQ200bG9TR01ldgoyZE9jQlV6M0ZpMUpvZ2lhRnBhaE9rQTBvbit5WnBOUHdmUG9QeW5rYXg5MHgyU2tDR2pRZUowVlI3UnNwUHhZCm93YmIyTGhzNktTTnFXNDdoT2w2MkIyQ0RQT2ptTnBYeElSelFYK1pNamc2aDkrVGIza09Rd0dqb0NpcEFnTUIKQUFHamZ6QjlNQjBHQTFVZERnUVdCQlQyUHdDL1VoalY0dEdmY0xzblZKVHdnMXRVUVRBT0JnTlZIUThCQWY4RQpCQU1DQWdRd0hRWURWUjBsQkJZd0ZBWUlLd1lCQlFVSEF3RUdDQ3NHQVFVRkJ3TUNNQXdHQTFVZEV3UUZNQU1CCkFmOHdId1lEVlIwakJCZ3dGb0FVOWo4QXYxSVkxZUxSbjNDN0oxU1U4SU5iVkVFd0RRWUpLb1pJaHZjTkFRRU4KQlFBRGdnRUJBRVRNY2k0anpJZDBTV3lqNnBJU3BtTEtVdEIvRnQ0SFZaM1VXR3czS2NRdzF3SWFFWkFnYmZjUAp1NmM4V2RMRC9Jd3owZm1uUkt6dXFVNDU3bkVaZDg2V1pMSW03WkZ2RjMrRWorTWdtVFdwd0FYc2RzcS8ra2phClZjaFZvYnVJeWVNbzloTzdnZ0ZlOGIrS2M1STd5cGZLZ0RMcmJpQkJveW1yT25VZVZ4dS9vZDdnRE4wVFRxdGQKNTEvTzM2VUh0Zmw4NjhOdXVidjlVV2poSkp4SHBmWGptTkl6MGVsRllWdVpYT21LZHQyVmZWN2xZdHcvLzZxMgpjVTVDL0huQjczL2xtTStGU0JTWDlzMjlPNWRCTGpPSC80VWJXYjlpQ1RMb090Q2FQTHg5RS9LNnNndm9xOGxFCjJuV0d0Y3RIb01sOFdsODdBeDV6U0xtVzNmRFMyRFU9Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K",
+                "deployment_id": "58b8a2e9b7c05900150004b8",
+                "uri": "postgres://admin:QYFVFALOYLESLIQB@bluemix-sandbox-dal-9-portal.3.dblayer.com:23971/bluebank_dev"
+            },
+            "syslog_drain_url": null,
+            "label": "compose-for-postgresql",
+            "provider": null,
+            "plan": "Standard",
+            "name": "Compose for PostgreSQL-ry",
+            "tags": [
+                "big_data",
+                "data_management",
+                "ibm_created"
+            ]
+        }
+    ]
+  }
+}
