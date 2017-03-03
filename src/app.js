@@ -3,13 +3,16 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const models = require('./models');
+
+models.sequelize.sync();
 
 const app = express();
 app.use(bodyParser.json());
 
 
-app.use('/transacoes', require('./routes/transacao'));
-app.use('/contas', require('./routes/conta'));
+app.use('/api/transacoes', require('./routes/transacao'));
+app.use('/api/contas', require('./routes/conta'));
 
 // Point static path to dist
 app.use(express.static(path.join(__dirname, '../clientapp/dist')));

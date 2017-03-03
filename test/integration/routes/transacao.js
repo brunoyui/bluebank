@@ -49,7 +49,7 @@ describe('Route for transaction operations /transacoes', () => {
     };
 
     request
-      .post('/transacoes/transfer')
+      .post('/api/transacoes/transfer')
       .send(contas)
       .end( (err, res) =>
       {

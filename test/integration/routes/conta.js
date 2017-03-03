@@ -38,7 +38,7 @@ describe('Route for conta operations /contas', () =>
 
   it('should return a list of contas', done => {
     request
-      .get('/contas')
+      .get('/api/contas')
       .end( (err, res) =>
       {
         expect(res.body).to.be.a('array');
