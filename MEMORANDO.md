@@ -13,21 +13,25 @@ ferramenta de apoio do Angular2 (@angular/cli). Esta ferramenta torna a codifica
 Integrou-se junto ao Angular2, o angular-material2 para os templates. Isto facilita no momento de criar o layout e componentes da página.
 
 ## Explicando a estrutura do código
-bluebank
-	test/
-	   integration/
-		 	         routes/ - contém os testes de integração para as chamadas à API Rest por http.
-			         ./helper.js - arquivo auxiliar para o framework mocha ao executar testes de integração
-			         ./mocha.opts - arquivo com parâmetros para o framework mocha para executar testes de integração
-		 unit/
-		 		models/ - contém testes unitários para algumas operações realizadas nos modelos ao interagir com banco
-		    services/ - contém testes unitários para funcionalidades de negócio, no caso o teste para transferência de fundos entre contas
-		    ./helper.js - arquivo auxiliar para o framework mocha ao excutar testes unitários
-		    ./mocha.opts - arquivo com parâmetros para o framework mocha para executar testes unitários
-	src/ -	contém todo o código para back-end
-	clientapp/ - contém todo o códgio para front-end
-	./.babelrc - configuração para babel (babel foi utilizado para utilizar alguns recursos atuais do javascript)
-  ./.manifest.yml - configuração para deploy no Bluemix
+bluebank <br/>
+	| <br/>
+	test
+		 | <br/>
+	   integration <br/>
+		 					 |
+		 	         routes - contém os testes de integração para as chamadas à API Rest por http. <br/>
+			         ./helper.js - arquivo auxiliar para o framework mocha ao executar testes de integração <br/>
+			         ./mocha.opts - arquivo com parâmetros para o framework mocha para executar testes de integração <br/>
+		 unit <br/>
+		 		|<br/>
+		 		models - contém testes unitários para algumas operações realizadas nos modelos ao interagir com banco <br/>
+		    services - contém testes unitários para funcionalidades de negócio, no caso o teste para transferência de fundos entre contas<br/>
+		    ./helper.js - arquivo auxiliar para o framework mocha ao excutar testes unitários <br/>
+		    ./mocha.opts - arquivo com parâmetros para o framework mocha para executar testes unitários <br/>
+	src -	contém todo o código para back-end <br/>
+	clientapp - contém todo o códgio para front-end <br/>
+	./.babelrc - configuração para babel (babel foi utilizado para utilizar alguns recursos atuais do javascript) <br/>
+  ./.manifest.yml - configuração para deploy no Bluemix <br/>
 
 ##Observações
 A parte fron-end não está totalmente finalizada. Foi criado a estrutura e a página inicial de contas com a integração para acessar a API de contas fornecida pelo back-end.
