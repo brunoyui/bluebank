@@ -8,7 +8,7 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class ContaService {
 
-  private contaUrl = 'http://localhost:7070/api/contas';
+  private contaUrl = 'https://bluebankbyui.mybluemix.net/api/contas';
 
   constructor(private http: Http) { }
 
