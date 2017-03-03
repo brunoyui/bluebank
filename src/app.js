@@ -8,6 +8,9 @@ const models = require('./models');
 models.sequelize.sync();
 
 const app = express();
+
+app.enable('trust proxy');
+
 app.use(bodyParser.json());
 
 

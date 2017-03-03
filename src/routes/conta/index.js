@@ -5,6 +5,7 @@ const ContaCorrente = require('../../models').contaCorrente;
 
 
 router.get('/', (req, res, next) => {
+  console.log('conta router');
   ContaCorrente.findAll()
     .then( result => res.json(result))
     .catch( err => res.status(412));

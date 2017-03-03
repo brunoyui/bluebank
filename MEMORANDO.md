@@ -43,4 +43,4 @@ Para o back-end é utilizado a seção "scripts" do arquivo package.json para ex
 Para executar os testes é necessário ter um banco local - (bluebank_test).
 
 O deploy da aplicação foi feita no ambiente Bluemix e estará acessível por
-http://bluebankbyui.mybluemix.net:7070
+https://bluebankbyui.mybluemix.net
